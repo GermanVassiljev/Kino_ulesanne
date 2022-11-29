@@ -68,7 +68,7 @@
             this.info_btn.Name = "info_btn";
             this.info_btn.Size = new System.Drawing.Size(169, 32);
             this.info_btn.TabIndex = 16;
-            this.info_btn.Text = "Saal 1. 36 kohad";
+            this.info_btn.Text = "Saal 1. 25 kohad";
             this.info_btn.UseVisualStyleBackColor = false;
             // 
             // Seans
