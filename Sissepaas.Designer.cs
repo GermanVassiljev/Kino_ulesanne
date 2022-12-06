@@ -32,10 +32,8 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.nimi_txt = new System.Windows.Forms.TextBox();
-            this.mail_txt = new System.Windows.Forms.TextBox();
             this.parool = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.regY_btn = new System.Windows.Forms.Button();
             this.tagasi2_btn = new System.Windows.Forms.Button();
@@ -73,18 +71,10 @@
             this.nimi_txt.Size = new System.Drawing.Size(147, 31);
             this.nimi_txt.TabIndex = 2;
             // 
-            // mail_txt
-            // 
-            this.mail_txt.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.mail_txt.Location = new System.Drawing.Point(340, 157);
-            this.mail_txt.Name = "mail_txt";
-            this.mail_txt.Size = new System.Drawing.Size(147, 29);
-            this.mail_txt.TabIndex = 3;
-            // 
             // parool
             // 
             this.parool.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.parool.Location = new System.Drawing.Point(340, 202);
+            this.parool.Location = new System.Drawing.Point(340, 164);
             this.parool.Name = "parool";
             this.parool.Size = new System.Drawing.Size(147, 29);
             this.parool.TabIndex = 4;
@@ -101,25 +91,13 @@
             this.label2.TabIndex = 6;
             this.label2.Text = "Nimi :";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Maroon;
-            this.label3.Font = new System.Drawing.Font("Monotype Corsiva", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.label3.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label3.Location = new System.Drawing.Point(241, 157);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(93, 33);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Gmail :";
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Maroon;
             this.label4.Font = new System.Drawing.Font("Monotype Corsiva", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(186)));
             this.label4.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label4.Location = new System.Drawing.Point(236, 202);
+            this.label4.Location = new System.Drawing.Point(236, 160);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(98, 33);
             this.label4.TabIndex = 8;
@@ -136,6 +114,7 @@
             this.regY_btn.TabIndex = 19;
             this.regY_btn.Text = "Valmis";
             this.regY_btn.UseVisualStyleBackColor = false;
+            this.regY_btn.Click += new System.EventHandler(this.regY_btn_Click);
             // 
             // tagasi2_btn
             // 
@@ -157,10 +136,8 @@
             this.Controls.Add(this.tagasi2_btn);
             this.Controls.Add(this.regY_btn);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.parool);
-            this.Controls.Add(this.mail_txt);
             this.Controls.Add(this.nimi_txt);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
@@ -178,10 +155,8 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox nimi_txt;
-        private System.Windows.Forms.TextBox mail_txt;
         private System.Windows.Forms.TextBox parool;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button regY_btn;
         private System.Windows.Forms.Button tagasi2_btn;

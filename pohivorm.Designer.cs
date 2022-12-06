@@ -81,6 +81,7 @@
             this.esindus_btn.TabIndex = 14;
             this.esindus_btn.Text = "Vaata esindus";
             this.esindus_btn.UseVisualStyleBackColor = false;
+            this.esindus_btn.Click += new System.EventHandler(this.esindus_btn_Click);
             // 
             // info_btn
             // 

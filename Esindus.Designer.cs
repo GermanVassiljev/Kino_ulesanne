@@ -32,15 +32,15 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.Esindus_pbox = new System.Windows.Forms.PictureBox();
-            this.esindus_btn = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.Nimi_grid = new System.Windows.Forms.DataGridView();
-            this.esindus_andmed = new System.Windows.Forms.DataGridView();
+            this.paremale = new System.Windows.Forms.Button();
+            this.vasakule = new System.Windows.Forms.Button();
             this.seans_btn = new System.Windows.Forms.Button();
+            this.nimi_lbl = new System.Windows.Forms.Label();
+            this.autor_lbl = new System.Windows.Forms.Label();
+            this.zanr_lbl = new System.Windows.Forms.Label();
+            this.aeg_lbl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Esindus_pbox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Nimi_grid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.esindus_andmed)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -74,49 +74,30 @@
             this.Esindus_pbox.TabIndex = 2;
             this.Esindus_pbox.TabStop = false;
             // 
-            // esindus_btn
+            // paremale
             // 
-            this.esindus_btn.BackColor = System.Drawing.Color.Maroon;
-            this.esindus_btn.Font = new System.Drawing.Font("Monotype Corsiva", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.esindus_btn.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.esindus_btn.Location = new System.Drawing.Point(710, 369);
-            this.esindus_btn.Name = "esindus_btn";
-            this.esindus_btn.Size = new System.Drawing.Size(59, 32);
-            this.esindus_btn.TabIndex = 15;
-            this.esindus_btn.Text = ">>>";
-            this.esindus_btn.UseVisualStyleBackColor = false;
+            this.paremale.BackColor = System.Drawing.Color.Maroon;
+            this.paremale.Font = new System.Drawing.Font("Monotype Corsiva", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.paremale.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.paremale.Location = new System.Drawing.Point(710, 369);
+            this.paremale.Name = "paremale";
+            this.paremale.Size = new System.Drawing.Size(59, 32);
+            this.paremale.TabIndex = 15;
+            this.paremale.Text = ">>>";
+            this.paremale.UseVisualStyleBackColor = false;
+            this.paremale.Click += new System.EventHandler(this.paremale_Click);
             // 
-            // button1
+            // vasakule
             // 
-            this.button1.BackColor = System.Drawing.Color.Maroon;
-            this.button1.Font = new System.Drawing.Font("Monotype Corsiva", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button1.Location = new System.Drawing.Point(554, 369);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(59, 32);
-            this.button1.TabIndex = 16;
-            this.button1.Text = "<<<";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
-            // Nimi_grid
-            // 
-            this.Nimi_grid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
-            this.Nimi_grid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders;
-            this.Nimi_grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Nimi_grid.Location = new System.Drawing.Point(554, 75);
-            this.Nimi_grid.Name = "Nimi_grid";
-            this.Nimi_grid.Size = new System.Drawing.Size(215, 29);
-            this.Nimi_grid.TabIndex = 17;
-            // 
-            // esindus_andmed
-            // 
-            this.esindus_andmed.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
-            this.esindus_andmed.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders;
-            this.esindus_andmed.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.esindus_andmed.Location = new System.Drawing.Point(51, 110);
-            this.esindus_andmed.Name = "esindus_andmed";
-            this.esindus_andmed.Size = new System.Drawing.Size(483, 253);
-            this.esindus_andmed.TabIndex = 18;
+            this.vasakule.BackColor = System.Drawing.Color.Maroon;
+            this.vasakule.Font = new System.Drawing.Font("Monotype Corsiva", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.vasakule.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.vasakule.Location = new System.Drawing.Point(554, 369);
+            this.vasakule.Name = "vasakule";
+            this.vasakule.Size = new System.Drawing.Size(59, 32);
+            this.vasakule.TabIndex = 16;
+            this.vasakule.Text = "<<<";
+            this.vasakule.UseVisualStyleBackColor = false;
             // 
             // seans_btn
             // 
@@ -129,27 +110,77 @@
             this.seans_btn.TabIndex = 19;
             this.seans_btn.Text = "Seansid";
             this.seans_btn.UseVisualStyleBackColor = false;
+            this.seans_btn.Click += new System.EventHandler(this.seans_btn_Click);
+            // 
+            // nimi_lbl
+            // 
+            this.nimi_lbl.AutoSize = true;
+            this.nimi_lbl.BackColor = System.Drawing.Color.Maroon;
+            this.nimi_lbl.Font = new System.Drawing.Font("Monotype Corsiva", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.nimi_lbl.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.nimi_lbl.Location = new System.Drawing.Point(23, 110);
+            this.nimi_lbl.Name = "nimi_lbl";
+            this.nimi_lbl.Size = new System.Drawing.Size(88, 39);
+            this.nimi_lbl.TabIndex = 20;
+            this.nimi_lbl.Text = "Nimi:";
+            // 
+            // autor_lbl
+            // 
+            this.autor_lbl.AutoSize = true;
+            this.autor_lbl.BackColor = System.Drawing.Color.Maroon;
+            this.autor_lbl.Font = new System.Drawing.Font("Monotype Corsiva", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.autor_lbl.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.autor_lbl.Location = new System.Drawing.Point(23, 160);
+            this.autor_lbl.Name = "autor_lbl";
+            this.autor_lbl.Size = new System.Drawing.Size(99, 39);
+            this.autor_lbl.TabIndex = 21;
+            this.autor_lbl.Text = "Autor:";
+            // 
+            // zanr_lbl
+            // 
+            this.zanr_lbl.AutoSize = true;
+            this.zanr_lbl.BackColor = System.Drawing.Color.Maroon;
+            this.zanr_lbl.Font = new System.Drawing.Font("Monotype Corsiva", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.zanr_lbl.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.zanr_lbl.Location = new System.Drawing.Point(23, 211);
+            this.zanr_lbl.Name = "zanr_lbl";
+            this.zanr_lbl.Size = new System.Drawing.Size(88, 39);
+            this.zanr_lbl.TabIndex = 22;
+            this.zanr_lbl.Text = "Žanr:";
+            // 
+            // aeg_lbl
+            // 
+            this.aeg_lbl.AutoSize = true;
+            this.aeg_lbl.BackColor = System.Drawing.Color.Maroon;
+            this.aeg_lbl.Font = new System.Drawing.Font("Monotype Corsiva", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.aeg_lbl.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.aeg_lbl.Location = new System.Drawing.Point(23, 270);
+            this.aeg_lbl.Name = "aeg_lbl";
+            this.aeg_lbl.Size = new System.Drawing.Size(231, 39);
+            this.aeg_lbl.TabIndex = 23;
+            this.aeg_lbl.Text = "Vabastamine aeg:";
             // 
             // Esindus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.aeg_lbl);
+            this.Controls.Add(this.zanr_lbl);
+            this.Controls.Add(this.autor_lbl);
+            this.Controls.Add(this.nimi_lbl);
             this.Controls.Add(this.seans_btn);
-            this.Controls.Add(this.esindus_andmed);
-            this.Controls.Add(this.Nimi_grid);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.esindus_btn);
+            this.Controls.Add(this.vasakule);
+            this.Controls.Add(this.paremale);
             this.Controls.Add(this.Esindus_pbox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Esindus";
             this.Text = "Esindus";
+            this.Load += new System.EventHandler(this.Esindus_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Esindus_pbox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Nimi_grid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.esindus_andmed)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -160,10 +191,12 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox Esindus_pbox;
-        private System.Windows.Forms.Button esindus_btn;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataGridView Nimi_grid;
-        private System.Windows.Forms.DataGridView esindus_andmed;
+        private System.Windows.Forms.Button paremale;
+        private System.Windows.Forms.Button vasakule;
         private System.Windows.Forms.Button seans_btn;
+        private System.Windows.Forms.Label nimi_lbl;
+        private System.Windows.Forms.Label autor_lbl;
+        private System.Windows.Forms.Label zanr_lbl;
+        private System.Windows.Forms.Label aeg_lbl;
     }
 }

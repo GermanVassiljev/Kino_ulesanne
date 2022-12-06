@@ -19,7 +19,14 @@ namespace Kino_ulesanne
             //silt_method(label1, 144, 9, 290, 57, 36F, "Monotype Corsiva", "Germani teater");
             //Controls.Add(label1);
         }
-        
+
+        private void esindus_btn_Click(object sender, EventArgs e)
+        {
+            Esindus esi = new Esindus();
+            this.Visible = false;
+            esi.Visible = true;
+        }
+
         //private void silt_method(Label silt, int x, int y, int a, int b, float font, string font_tekst, string tekst, Color varv)
         //{
         //    silt.AutoSize = true;

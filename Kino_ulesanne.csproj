@@ -141,6 +141,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Piltid\background.jpg" />
+    <Content Include="Piltid\black_pig.PNG" />
     <Content Include="Piltid\sõit.png" />
     <Content Include="Piltid\sõit_ei.png" />
     <Content Include="teaterBase.mdf">

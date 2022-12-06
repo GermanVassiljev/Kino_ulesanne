@@ -16,7 +16,7 @@ namespace Kino_ulesanne
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Saal());
+            Application.Run(new Esindus());
         }
     }
 }
