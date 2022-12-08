@@ -90,5 +90,12 @@ namespace Kino_ulesanne
         {
             
         }
+
+        private void tagasi1_btn_Click(object sender, EventArgs e)
+        {
+            Teater teater = new Teater();
+            this.Visible = false;
+            teater.Visible = true;
+        }
     }
 }

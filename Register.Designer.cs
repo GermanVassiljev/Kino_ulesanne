@@ -154,6 +154,7 @@
             this.tagasi1_btn.TabIndex = 19;
             this.tagasi1_btn.Text = "Tagasi";
             this.tagasi1_btn.UseVisualStyleBackColor = false;
+            this.tagasi1_btn.Click += new System.EventHandler(this.tagasi1_btn_Click);
             // 
             // lbl1
             // 

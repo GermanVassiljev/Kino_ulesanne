@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,20 +16,26 @@ namespace Kino_ulesanne
     {
         SqlConnection connect = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\opilane\source\repos\TARpv21_Vassiljev\Kino_ulesanne\teaterBase.mdf;Integrated Security=True");
         SqlCommand cmd;
+        public int zanridID;
         public Esindus()
         {
             InitializeComponent();
         }
-        int id_number = 0;
-        public void lugemine_tabel(object sender, EventArgs e)
+        public int id_number = 1;
+        public int lugemine_esindus()
         {
+            int lugemine = 0;
+            cmd = new SqlCommand("SELECT * FROM Esindus", connect);
+            connect.Open();
             using (SqlDataReader luge = cmd.ExecuteReader())
             {
                 while (luge.Read())
                 {
-                    id_number++;
+                    lugemine++;
                 }
             }
+            connect.Close();
+            return lugemine;
                 
         }
 
@@ -41,42 +48,23 @@ namespace Kino_ulesanne
 
         private void paremale_Click(object sender, EventArgs e)
         {
-            id_number-=1;
-            cmd=new SqlCommand("SELECT * FROM Esindus WHERE esindusId=@id_number", connect);
-            connect.Open();           
-            cmd.Parameters.AddWithValue("@id_number", id_number);
-            try { 
-                using (SqlDataReader lug = cmd.ExecuteReader())
-                {
-                    while (lug.Read())
-                    {
-                        string x = (lug["pilt"].ToString());
-                        Esindus_pbox.Image = System.Drawing.Image.FromFile(@"..\..\Piltid\" + x);
-                        Esindus_pbox.SizeMode = PictureBoxSizeMode.StretchImage;
-                        x = (lug["nimetus"].ToString());
-                        nimi_lbl.Text = "Nimi: "+x;
-                    }
-
-                }
-            }
-            finally
+            string x;
+            id_number -=1;
+            if (id_number <= 0)
             {
-               connect.Close(); 
-            }
-            
-        }
+                id_number = lugemine_esindus();
 
-        private void Esindus_Load(object sender, EventArgs e)
-        {
-            cmd=new SqlCommand("SELECT * FROM Esindus WHERE esindusId=1", connect);
+            }
+            cmd = new SqlCommand("SELECT * FROM Esindus WHERE esindusId=@id", connect);
             connect.Open();
+            cmd.Parameters.AddWithValue("@id", id_number);
             try
             {
                 using (SqlDataReader lug = cmd.ExecuteReader())
                 {
                     while (lug.Read())
                     {
-                        string x = (lug["pilt"].ToString());
+                        x = (lug["pilt"].ToString());
                         Esindus_pbox.Image = System.Drawing.Image.FromFile(@"..\..\Piltid\" + x);
                         Esindus_pbox.SizeMode = PictureBoxSizeMode.StretchImage;
                         x = (lug["nimetus"].ToString());
@@ -85,7 +73,7 @@ namespace Kino_ulesanne
                         autor_lbl.Text = "Autor: " + x;
                         x = (lug["vabastamine_aeg"].ToString());
                         aeg_lbl.Text = "Vabastamine aeg: " + x;
-                        x = (lug["zanrId"].ToString());
+                        zanridID = Int16.Parse((lug["zanrId"].ToString()));
                     }
 
                 }
@@ -94,12 +82,130 @@ namespace Kino_ulesanne
             {
                 connect.Close();
             }
-            cmd = new SqlCommand("SELECT zanrnimi FROM Zanr WHERE zanrId=@x");
+            cmd = new SqlCommand("SELECT zanrnimi FROM Zanr WHERE zanrId=@x", connect);
             connect.Open();
-            //cmd.Parameters.AddWithValue("@x", x);
+            cmd.Parameters.AddWithValue("@x", zanridID);
             try
             {
-                
+                using (SqlDataReader lug = cmd.ExecuteReader())
+                {
+                    while (lug.Read())
+                    {
+                        x = (lug["zanrnimi"].ToString());
+                        zanr_lbl.Text = "Žanr: " + x;
+                    }
+                }
+
+            }
+            finally
+            {
+
+                connect.Close();
+            }
+
+        }
+
+        private void Esindus_Load(object sender, EventArgs e)
+        {
+            string x;
+            
+            cmd=new SqlCommand("SELECT * FROM Esindus WHERE esindusId=1", connect);
+            connect.Open();
+            try
+            {
+                using (SqlDataReader lug = cmd.ExecuteReader())
+                {
+                    while (lug.Read())
+                    {
+                        x = (lug["pilt"].ToString());
+                        Esindus_pbox.Image = System.Drawing.Image.FromFile(@"..\..\Piltid\" + x);
+                        Esindus_pbox.SizeMode = PictureBoxSizeMode.StretchImage;
+                        x = (lug["nimetus"].ToString());
+                        nimi_lbl.Text = "Nimi: " + x;
+                        x = (lug["autor"].ToString());
+                        autor_lbl.Text = "Autor: " + x;
+                        x = (lug["vabastamine_aeg"].ToString());                       
+                        aeg_lbl.Text = "Vabastamine aeg: " + x;
+                        zanridID = Int16.Parse((lug["zanrId"].ToString())); 
+                    }
+
+                }
+            }
+            finally
+            {
+                connect.Close();
+            }
+            cmd = new SqlCommand("SELECT zanrnimi FROM Zanr WHERE zanrId=@x", connect);
+            connect.Open();
+            cmd.Parameters.AddWithValue("@x", zanridID);
+            try
+            {
+                using (SqlDataReader lug = cmd.ExecuteReader())
+                {
+                    while (lug.Read())
+                    {
+                        x = (lug["zanrnimi"].ToString());
+                        zanr_lbl.Text = "Žanr: " + x;
+                    }
+                }
+
+            }
+            finally
+            {
+
+                connect.Close();
+            }
+        }
+
+        private void vasakule_Click(object sender, EventArgs e)
+        {
+            string x;
+            id_number += 1;
+            if (id_number > lugemine_esindus())
+            {
+                id_number = id_number-lugemine_esindus();
+            }
+            cmd = new SqlCommand("SELECT * FROM Esindus WHERE esindusId=@id", connect);
+            connect.Open();
+            cmd.Parameters.AddWithValue("@id", id_number);
+            try
+            {
+                using (SqlDataReader lug = cmd.ExecuteReader())
+                {
+                    while (lug.Read())
+                    {
+                        x = (lug["pilt"].ToString());
+                        Esindus_pbox.Image = System.Drawing.Image.FromFile(@"..\..\Piltid\" + x);
+                        Esindus_pbox.SizeMode = PictureBoxSizeMode.StretchImage;
+                        x = (lug["nimetus"].ToString());
+                        nimi_lbl.Text = "Nimi: " + x;
+                        x = (lug["autor"].ToString());
+                        autor_lbl.Text = "Autor: " + x;
+                        x = (lug["vabastamine_aeg"].ToString());
+                        aeg_lbl.Text = "Vabastamine aeg: " + x;
+                        zanridID = Int16.Parse((lug["zanrId"].ToString()));
+                    }
+
+                }
+            }
+            finally
+            {
+                connect.Close();
+            }
+            cmd = new SqlCommand("SELECT zanrnimi FROM Zanr WHERE zanrId=@x", connect);
+            connect.Open();
+            cmd.Parameters.AddWithValue("@x", zanridID);
+            try
+            {
+                using (SqlDataReader lug = cmd.ExecuteReader())
+                {
+                    while (lug.Read())
+                    {
+                        x = (lug["zanrnimi"].ToString());
+                        zanr_lbl.Text = "Žanr: " + x;
+                    }
+                }
+
             }
             finally
             {

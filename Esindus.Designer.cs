@@ -98,6 +98,7 @@
             this.vasakule.TabIndex = 16;
             this.vasakule.Text = "<<<";
             this.vasakule.UseVisualStyleBackColor = false;
+            this.vasakule.Click += new System.EventHandler(this.vasakule_Click);
             // 
             // seans_btn
             // 

@@ -106,6 +106,7 @@
             this.sisse_btn.TabIndex = 16;
             this.sisse_btn.Text = "Logi sisse";
             this.sisse_btn.UseVisualStyleBackColor = false;
+            this.sisse_btn.Click += new System.EventHandler(this.sisse_btn_Click);
             // 
             // reg_btn
             // 
@@ -118,6 +119,7 @@
             this.reg_btn.TabIndex = 17;
             this.reg_btn.Text = "Registrerimine";
             this.reg_btn.UseVisualStyleBackColor = false;
+            this.reg_btn.Click += new System.EventHandler(this.reg_btn_Click);
             // 
             // label2
             // 
@@ -130,6 +132,7 @@
             this.label2.Size = new System.Drawing.Size(158, 33);
             this.label2.TabIndex = 18;
             this.label2.Text = "Tere külaline!";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // Teater
             // 
@@ -150,6 +153,7 @@
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.Name = "Teater";
             this.Text = "teater";
+            this.VisibleChanged += new System.EventHandler(this.Teater_VisibleChanged);
             ((System.ComponentModel.ISupportInitialize)(this.eventLog1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);

@@ -16,7 +16,17 @@ namespace Kino_ulesanne
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Esindus());
+            Application.Run(new Teater());
         }
+    }
+    class kasutaja_nimi
+    {
+        public static string nimi;
+        public static void nimiG()
+        {
+
+        }
+
+        public static 
     }
 }

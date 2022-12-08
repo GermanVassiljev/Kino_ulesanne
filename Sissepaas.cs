@@ -20,18 +20,22 @@ namespace Kino_ulesanne
         public Sissepaas()
         {
             InitializeComponent();
-        }
+        }       
         private void regY_btn_Click(object sender, EventArgs e)
         {
-            cmd = new SqlCommand("SELECT * FROM Kasutaja", connect);
+            string x;
+            cmd = new SqlCommand("SELECT * FROM Kasutajad", connect);
             connect.Open();
             lugeja = cmd.ExecuteReader();
             while (lugeja.Read())
             {
-                if (nimi_txt.Text == lugeja["login"].ToString() && parool.Text == lugeja["parool"].ToString())
+                if (nimi_txt.Text == lugeja["kasutajaNimi"].ToString() && parool.Text == lugeja["parool"].ToString())
                 {
-                    MessageBox.Show("Tere tulemast!");
+                    MessageBox.Show("Tere tulemast!");                   
                     Teater pohi = new Teater();
+                    x = (lugeja["kasutajaNimi"].ToString());
+                    kasutaja_nimi.nimi = x;
+                        
                     this.Visible = false;
                     pohi.Visible = true;
                 }
