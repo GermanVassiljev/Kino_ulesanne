@@ -27,6 +27,6 @@ namespace Kino_ulesanne
 
         }
 
-        public static 
+        //public static 
     }
 }
