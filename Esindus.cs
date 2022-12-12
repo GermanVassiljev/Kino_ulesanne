@@ -41,6 +41,7 @@ namespace Kino_ulesanne
 
         private void seans_btn_Click(object sender, EventArgs e)
         {
+            kasutaja_nimi.ID=id_number;
             Seans seans = new Seans();
             this.Visible = false;
             seans.Visible = true;
@@ -48,7 +49,6 @@ namespace Kino_ulesanne
 
         private void paremale_Click(object sender, EventArgs e)
         {
-            string x;
             id_number -=1;
             if (id_number <= 0)
             {
@@ -64,15 +64,11 @@ namespace Kino_ulesanne
                 {
                     while (lug.Read())
                     {
-                        x = (lug["pilt"].ToString());
-                        Esindus_pbox.Image = System.Drawing.Image.FromFile(@"..\..\Piltid\" + x);
+                        Esindus_pbox.Image = System.Drawing.Image.FromFile(@"..\..\Piltid\" + (lug["pilt"].ToString()));
                         Esindus_pbox.SizeMode = PictureBoxSizeMode.StretchImage;
-                        x = (lug["nimetus"].ToString());
-                        nimi_lbl.Text = "Nimi: " + x;
-                        x = (lug["autor"].ToString());
-                        autor_lbl.Text = "Autor: " + x;
-                        x = (lug["vabastamine_aeg"].ToString());
-                        aeg_lbl.Text = "Vabastamine aeg: " + x;
+                        nimi_lbl.Text = "Nimi: " + (lug["nimetus"].ToString());
+                        autor_lbl.Text = "Autor: " + (lug["autor"].ToString());
+                        aeg_lbl.Text = "Vabastamine aeg: " + (lug["vabastamine_aeg"].ToString());
                         zanridID = Int16.Parse((lug["zanrId"].ToString()));
                     }
 
@@ -91,8 +87,7 @@ namespace Kino_ulesanne
                 {
                     while (lug.Read())
                     {
-                        x = (lug["zanrnimi"].ToString());
-                        zanr_lbl.Text = "Žanr: " + x;
+                        zanr_lbl.Text = "Žanr: " + (lug["zanrnimi"].ToString());
                     }
                 }
 

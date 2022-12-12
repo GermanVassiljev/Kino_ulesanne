@@ -31,7 +31,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Seans));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            this.calendar = new System.Windows.Forms.MonthCalendar();
+            this.esindus_lbl = new System.Windows.Forms.Label();
+            this.saal_lbl = new System.Windows.Forms.Label();
+            this.aeg_lbl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,26 +62,66 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Telli";
             // 
-            // monthCalendar1
+            // calendar
             // 
-            this.monthCalendar1.CalendarDimensions = new System.Drawing.Size(1, 3);
-            this.monthCalendar1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.monthCalendar1.Location = new System.Drawing.Point(520, 0);
-            this.monthCalendar1.Name = "monthCalendar1";
-            this.monthCalendar1.TabIndex = 3;
-            this.monthCalendar1.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateChanged);
+            this.calendar.CalendarDimensions = new System.Drawing.Size(1, 3);
+            this.calendar.Dock = System.Windows.Forms.DockStyle.Right;
+            this.calendar.Location = new System.Drawing.Point(520, 0);
+            this.calendar.Name = "calendar";
+            this.calendar.TabIndex = 3;
+            this.calendar.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateChanged);
+            // 
+            // esindus_lbl
+            // 
+            this.esindus_lbl.AutoSize = true;
+            this.esindus_lbl.BackColor = System.Drawing.Color.Maroon;
+            this.esindus_lbl.Font = new System.Drawing.Font("Monotype Corsiva", 27.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.esindus_lbl.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.esindus_lbl.Location = new System.Drawing.Point(14, 91);
+            this.esindus_lbl.Name = "esindus_lbl";
+            this.esindus_lbl.Size = new System.Drawing.Size(144, 45);
+            this.esindus_lbl.TabIndex = 4;
+            this.esindus_lbl.Text = "Esindus:";
+            // 
+            // saal_lbl
+            // 
+            this.saal_lbl.AutoSize = true;
+            this.saal_lbl.BackColor = System.Drawing.Color.Maroon;
+            this.saal_lbl.Font = new System.Drawing.Font("Monotype Corsiva", 27.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.saal_lbl.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.saal_lbl.Location = new System.Drawing.Point(14, 220);
+            this.saal_lbl.Name = "saal_lbl";
+            this.saal_lbl.Size = new System.Drawing.Size(102, 45);
+            this.saal_lbl.TabIndex = 5;
+            this.saal_lbl.Text = "Saal: ";
+            // 
+            // aeg_lbl
+            // 
+            this.aeg_lbl.AutoSize = true;
+            this.aeg_lbl.BackColor = System.Drawing.Color.Maroon;
+            this.aeg_lbl.Font = new System.Drawing.Font("Monotype Corsiva", 27.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.aeg_lbl.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.aeg_lbl.Location = new System.Drawing.Point(16, 153);
+            this.aeg_lbl.Name = "aeg_lbl";
+            this.aeg_lbl.Size = new System.Drawing.Size(94, 45);
+            this.aeg_lbl.TabIndex = 6;
+            this.aeg_lbl.Text = "Aeg: ";
             // 
             // Seans
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(677, 460);
-            this.Controls.Add(this.monthCalendar1);
+            this.Controls.Add(this.aeg_lbl);
+            this.Controls.Add(this.saal_lbl);
+            this.Controls.Add(this.esindus_lbl);
+            this.Controls.Add(this.calendar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Seans";
             this.Text = "Seans";
+            this.Load += new System.EventHandler(this.Seans_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -89,6 +132,9 @@
 
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.MonthCalendar monthCalendar1;
+        private System.Windows.Forms.MonthCalendar calendar;
+        private System.Windows.Forms.Label esindus_lbl;
+        private System.Windows.Forms.Label saal_lbl;
+        private System.Windows.Forms.Label aeg_lbl;
     }
 }

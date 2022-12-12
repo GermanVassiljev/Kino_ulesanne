@@ -27,6 +27,10 @@ namespace Kino_ulesanne
 
         }
 
-        //public static 
+        public static int ID;
+        public static void ID_uus()
+        {
+
+        }
     }
 }
