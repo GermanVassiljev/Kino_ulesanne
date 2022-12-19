@@ -31,10 +31,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Seans));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.calendar = new System.Windows.Forms.MonthCalendar();
             this.esindus_lbl = new System.Windows.Forms.Label();
             this.saal_lbl = new System.Windows.Forms.Label();
             this.aeg_lbl = new System.Windows.Forms.Label();
+            this.calendar = new System.Windows.Forms.DateTimePicker();
+            this.paremale = new System.Windows.Forms.Button();
+            this.vasakule = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -45,7 +47,7 @@
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(677, 460);
+            this.pictureBox1.Size = new System.Drawing.Size(677, 334);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -62,22 +64,13 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Telli";
             // 
-            // calendar
-            // 
-            this.calendar.CalendarDimensions = new System.Drawing.Size(1, 3);
-            this.calendar.Dock = System.Windows.Forms.DockStyle.Right;
-            this.calendar.Location = new System.Drawing.Point(520, 0);
-            this.calendar.Name = "calendar";
-            this.calendar.TabIndex = 3;
-            this.calendar.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateChanged);
-            // 
             // esindus_lbl
             // 
             this.esindus_lbl.AutoSize = true;
             this.esindus_lbl.BackColor = System.Drawing.Color.Maroon;
             this.esindus_lbl.Font = new System.Drawing.Font("Monotype Corsiva", 27.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(186)));
             this.esindus_lbl.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.esindus_lbl.Location = new System.Drawing.Point(14, 91);
+            this.esindus_lbl.Location = new System.Drawing.Point(180, 73);
             this.esindus_lbl.Name = "esindus_lbl";
             this.esindus_lbl.Size = new System.Drawing.Size(144, 45);
             this.esindus_lbl.TabIndex = 4;
@@ -89,7 +82,7 @@
             this.saal_lbl.BackColor = System.Drawing.Color.Maroon;
             this.saal_lbl.Font = new System.Drawing.Font("Monotype Corsiva", 27.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(186)));
             this.saal_lbl.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.saal_lbl.Location = new System.Drawing.Point(14, 220);
+            this.saal_lbl.Location = new System.Drawing.Point(180, 155);
             this.saal_lbl.Name = "saal_lbl";
             this.saal_lbl.Size = new System.Drawing.Size(102, 45);
             this.saal_lbl.TabIndex = 5;
@@ -101,21 +94,56 @@
             this.aeg_lbl.BackColor = System.Drawing.Color.Maroon;
             this.aeg_lbl.Font = new System.Drawing.Font("Monotype Corsiva", 27.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(186)));
             this.aeg_lbl.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.aeg_lbl.Location = new System.Drawing.Point(16, 153);
+            this.aeg_lbl.Location = new System.Drawing.Point(243, 266);
             this.aeg_lbl.Name = "aeg_lbl";
             this.aeg_lbl.Size = new System.Drawing.Size(94, 45);
             this.aeg_lbl.TabIndex = 6;
             this.aeg_lbl.Text = "Aeg: ";
             // 
+            // calendar
+            // 
+            this.calendar.Location = new System.Drawing.Point(446, 12);
+            this.calendar.Name = "calendar";
+            this.calendar.Size = new System.Drawing.Size(191, 20);
+            this.calendar.TabIndex = 7;
+            this.calendar.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            // 
+            // paremale
+            // 
+            this.paremale.BackColor = System.Drawing.Color.Maroon;
+            this.paremale.Font = new System.Drawing.Font("Monotype Corsiva", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.paremale.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.paremale.Location = new System.Drawing.Point(466, 266);
+            this.paremale.Name = "paremale";
+            this.paremale.Size = new System.Drawing.Size(59, 45);
+            this.paremale.TabIndex = 16;
+            this.paremale.Text = ">>>";
+            this.paremale.UseVisualStyleBackColor = false;
+            this.paremale.Click += new System.EventHandler(this.paremale_Click_1);
+            // 
+            // vasakule
+            // 
+            this.vasakule.BackColor = System.Drawing.Color.Maroon;
+            this.vasakule.Font = new System.Drawing.Font("Monotype Corsiva", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.vasakule.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.vasakule.Location = new System.Drawing.Point(178, 266);
+            this.vasakule.Name = "vasakule";
+            this.vasakule.Size = new System.Drawing.Size(59, 45);
+            this.vasakule.TabIndex = 17;
+            this.vasakule.Text = "<<<";
+            this.vasakule.UseVisualStyleBackColor = false;
+            // 
             // Seans
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(677, 460);
+            this.ClientSize = new System.Drawing.Size(677, 334);
+            this.Controls.Add(this.vasakule);
+            this.Controls.Add(this.paremale);
+            this.Controls.Add(this.calendar);
             this.Controls.Add(this.aeg_lbl);
             this.Controls.Add(this.saal_lbl);
             this.Controls.Add(this.esindus_lbl);
-            this.Controls.Add(this.calendar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -132,9 +160,11 @@
 
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.MonthCalendar calendar;
         private System.Windows.Forms.Label esindus_lbl;
         private System.Windows.Forms.Label saal_lbl;
         private System.Windows.Forms.Label aeg_lbl;
+        private System.Windows.Forms.DateTimePicker calendar;
+        private System.Windows.Forms.Button paremale;
+        private System.Windows.Forms.Button vasakule;
     }
 }

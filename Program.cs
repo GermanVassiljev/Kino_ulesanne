@@ -32,5 +32,10 @@ namespace Kino_ulesanne
         {
 
         }
+        public static int SaalID;
+        public static void SaalID_uus()
+        {
+
+        }
     }
 }

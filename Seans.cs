@@ -15,38 +15,32 @@ namespace Kino_ulesanne
     public partial class Seans : Form
     {
         SqlConnection connect = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\opilane\source\repos\TARpv21_Vassiljev\Kino_ulesanne\teaterBase.mdf;Integrated Security=True");
-        SqlCommand cmd;
-        
+        SqlCommand cmd; 
+
         public Seans()
         {
             InitializeComponent();
         }
-
-        private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
+        List<int> esindus_seansid = new List<int>();
+        public int lugemine_esindus()
         {
-            //DateTimePicker()
+            int lugemine = 0;
             cmd = new SqlCommand("SELECT * FROM Seans WHERE esindusId=@id", connect);
-            connect.Open();
             cmd.Parameters.AddWithValue("@id", kasutaja_nimi.ID);
-            try
+            connect.Open();
+            using (SqlDataReader luge = cmd.ExecuteReader())
             {
-                using (SqlDataReader lug = cmd.ExecuteReader())
+                while (luge.Read())
                 {
-                    while (lug.Read())
-                    {
-                        if ((lug["paev"])== calendar)
-                        {
-                            aeg_lbl.Text = (lug["aeg"].ToString());
-                        }
-                    }                   
+                    esindus_seansid.Add(Int16.Parse(luge["seansId"].ToString()));
+                    lugemine++;
                 }
             }
-            finally
-            {
-                connect.Close();
-            }
-        }
+            lugemine = lugemine - 1;
+            connect.Close();
+            return lugemine;
 
+        }
         private void Seans_Load(object sender, EventArgs e)
         {
             cmd = new SqlCommand("SELECT nimetus FROM Esindus WHERE esindusId=@id", connect);
@@ -58,10 +52,82 @@ namespace Kino_ulesanne
                 {
                     while (lug.Read())
                     {
-                        esindus_lbl.Text = (lug["nimetus"].ToString());
+                        esindus_lbl.Text = "Esindus: " + (lug["nimetus"].ToString());
                     }
 
                 }
+            }
+            finally
+            {
+                connect.Close();
+            }
+        }        
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            string calendarText = calendar.ToString();
+            calendarText = calendarText.Substring(44);
+            calendarText = calendarText.Substring(0, calendarText.Length-9);
+
+            cmd = new SqlCommand("SELECT * FROM Seans WHERE esindusId=@id", connect);
+            connect.Open();
+            cmd.Parameters.AddWithValue("@id", kasutaja_nimi.ID);
+            try
+            {
+                using (SqlDataReader lug = cmd.ExecuteReader())
+                {
+                    while (lug.Read())
+                    {
+                        string PaevText = lug["paev"].ToString();
+                        PaevText = PaevText.Substring(0, PaevText.Length-9);
+                        if (PaevText == calendarText)
+                        {
+                            aeg_lbl.Text = "Aeg: "+(lug["aeg"].ToString());
+                            saal_lbl.Text = "Saal: " + (lug["saalId"].ToString());
+
+                        }
+                    }
+                }
+            }
+            finally
+            {
+                connect.Close();
+            }
+        }
+        public int aeg_arv = 1;
+
+        private void paremale_Click_1(object sender, EventArgs e)
+        {
+            string calendarText = calendar.ToString();
+            calendarText = calendarText.Substring(44);
+            calendarText = calendarText.Substring(0, calendarText.Length - 9);
+
+            aeg_arv = aeg_arv - 1;
+            if (aeg_arv <= -1)
+            {
+                aeg_arv = lugemine_esindus();
+            }
+            MessageBox.Show(aeg_arv.ToString());
+            cmd = new SqlCommand("SELECT * FROM Seans WHERE seansId=@id", connect);
+            connect.Open();
+            cmd.Parameters.AddWithValue("@id", esindus_seansid[1]);
+            try
+            {
+                using (SqlDataReader lug = cmd.ExecuteReader())
+                {
+                    while (lug.Read())
+                    {
+                        string PaevText = lug["paev"].ToString();
+                        PaevText = PaevText.Substring(0, PaevText.Length - 9);
+                        if (PaevText == calendarText)
+                        {
+                            aeg_lbl.Text = "Aeg: " + (lug["aeg"].ToString());
+                            saal_lbl.Text = "Saal: " + (lug["saalId"].ToString());
+
+                        }
+
+                    }
+                }
+
             }
             finally
             {
