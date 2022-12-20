@@ -37,6 +37,7 @@
             this.calendar = new System.Windows.Forms.DateTimePicker();
             this.paremale = new System.Windows.Forms.Button();
             this.vasakule = new System.Windows.Forms.Button();
+            this.Tellima_btn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -70,7 +71,7 @@
             this.esindus_lbl.BackColor = System.Drawing.Color.Maroon;
             this.esindus_lbl.Font = new System.Drawing.Font("Monotype Corsiva", 27.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(186)));
             this.esindus_lbl.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.esindus_lbl.Location = new System.Drawing.Point(180, 73);
+            this.esindus_lbl.Location = new System.Drawing.Point(14, 86);
             this.esindus_lbl.Name = "esindus_lbl";
             this.esindus_lbl.Size = new System.Drawing.Size(144, 45);
             this.esindus_lbl.TabIndex = 4;
@@ -82,7 +83,7 @@
             this.saal_lbl.BackColor = System.Drawing.Color.Maroon;
             this.saal_lbl.Font = new System.Drawing.Font("Monotype Corsiva", 27.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(186)));
             this.saal_lbl.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.saal_lbl.Location = new System.Drawing.Point(180, 155);
+            this.saal_lbl.Location = new System.Drawing.Point(16, 154);
             this.saal_lbl.Name = "saal_lbl";
             this.saal_lbl.Size = new System.Drawing.Size(102, 45);
             this.saal_lbl.TabIndex = 5;
@@ -94,7 +95,7 @@
             this.aeg_lbl.BackColor = System.Drawing.Color.Maroon;
             this.aeg_lbl.Font = new System.Drawing.Font("Monotype Corsiva", 27.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(186)));
             this.aeg_lbl.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.aeg_lbl.Location = new System.Drawing.Point(243, 266);
+            this.aeg_lbl.Location = new System.Drawing.Point(87, 270);
             this.aeg_lbl.Name = "aeg_lbl";
             this.aeg_lbl.Size = new System.Drawing.Size(94, 45);
             this.aeg_lbl.TabIndex = 6;
@@ -113,7 +114,7 @@
             this.paremale.BackColor = System.Drawing.Color.Maroon;
             this.paremale.Font = new System.Drawing.Font("Monotype Corsiva", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(186)));
             this.paremale.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.paremale.Location = new System.Drawing.Point(466, 266);
+            this.paremale.Location = new System.Drawing.Point(341, 274);
             this.paremale.Name = "paremale";
             this.paremale.Size = new System.Drawing.Size(59, 45);
             this.paremale.TabIndex = 16;
@@ -126,18 +127,33 @@
             this.vasakule.BackColor = System.Drawing.Color.Maroon;
             this.vasakule.Font = new System.Drawing.Font("Monotype Corsiva", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(186)));
             this.vasakule.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.vasakule.Location = new System.Drawing.Point(178, 266);
+            this.vasakule.Location = new System.Drawing.Point(12, 270);
             this.vasakule.Name = "vasakule";
             this.vasakule.Size = new System.Drawing.Size(59, 45);
             this.vasakule.TabIndex = 17;
             this.vasakule.Text = "<<<";
             this.vasakule.UseVisualStyleBackColor = false;
+            this.vasakule.Click += new System.EventHandler(this.vasakule_Click);
+            // 
+            // Tellima_btn
+            // 
+            this.Tellima_btn.BackColor = System.Drawing.Color.Maroon;
+            this.Tellima_btn.Font = new System.Drawing.Font("Monotype Corsiva", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.Tellima_btn.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.Tellima_btn.Location = new System.Drawing.Point(539, 274);
+            this.Tellima_btn.Name = "Tellima_btn";
+            this.Tellima_btn.Size = new System.Drawing.Size(111, 45);
+            this.Tellima_btn.TabIndex = 18;
+            this.Tellima_btn.Text = "Tellima";
+            this.Tellima_btn.UseVisualStyleBackColor = false;
+            this.Tellima_btn.Click += new System.EventHandler(this.Tellima_btn_click);
             // 
             // Seans
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(677, 334);
+            this.Controls.Add(this.Tellima_btn);
             this.Controls.Add(this.vasakule);
             this.Controls.Add(this.paremale);
             this.Controls.Add(this.calendar);
@@ -166,5 +182,6 @@
         private System.Windows.Forms.DateTimePicker calendar;
         private System.Windows.Forms.Button paremale;
         private System.Windows.Forms.Button vasakule;
+        private System.Windows.Forms.Button Tellima_btn;
     }
 }

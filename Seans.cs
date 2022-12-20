@@ -28,21 +28,29 @@ namespace Kino_ulesanne
             cmd = new SqlCommand("SELECT * FROM Seans WHERE esindusId=@id", connect);
             cmd.Parameters.AddWithValue("@id", kasutaja_nimi.ID);
             connect.Open();
-            using (SqlDataReader luge = cmd.ExecuteReader())
-            {
-                while (luge.Read())
+            try { 
+                using (SqlDataReader luge = cmd.ExecuteReader())
                 {
-                    esindus_seansid.Add(Int16.Parse(luge["seansId"].ToString()));
-                    lugemine++;
+                    while (luge.Read())
+                    {
+                        esindus_seansid.Add(Int16.Parse(luge["seansId"].ToString()));
+                        lugemine++;
+                    }
                 }
+                lugemine = lugemine - 1;
             }
-            lugemine = lugemine - 1;
-            connect.Close();
+            finally
+            {
+                connect.Close();
+            }
+            
+            
             return lugemine;
 
         }
         private void Seans_Load(object sender, EventArgs e)
         {
+            lugemine_esindus();
             cmd = new SqlCommand("SELECT nimetus FROM Esindus WHERE esindusId=@id", connect);
             connect.Open();
             cmd.Parameters.AddWithValue("@id", kasutaja_nimi.ID);
@@ -83,6 +91,7 @@ namespace Kino_ulesanne
                         {
                             aeg_lbl.Text = "Aeg: "+(lug["aeg"].ToString());
                             saal_lbl.Text = "Saal: " + (lug["saalId"].ToString());
+                            kasutaja_nimi.SaalID = Int16.Parse(lug["saalId"].ToString());
 
                         }
                     }
@@ -106,10 +115,9 @@ namespace Kino_ulesanne
             {
                 aeg_arv = lugemine_esindus();
             }
-            MessageBox.Show(aeg_arv.ToString());
             cmd = new SqlCommand("SELECT * FROM Seans WHERE seansId=@id", connect);
             connect.Open();
-            cmd.Parameters.AddWithValue("@id", esindus_seansid[1]);
+            cmd.Parameters.AddWithValue("@id", esindus_seansid[aeg_arv]);
             try
             {
                 using (SqlDataReader lug = cmd.ExecuteReader())
@@ -122,6 +130,46 @@ namespace Kino_ulesanne
                         {
                             aeg_lbl.Text = "Aeg: " + (lug["aeg"].ToString());
                             saal_lbl.Text = "Saal: " + (lug["saalId"].ToString());
+                            kasutaja_nimi.SaalID = Int16.Parse(lug["saalId"].ToString());
+                        }
+
+                    }
+                }
+
+            }
+            finally
+            {
+                connect.Close();
+            }
+        }
+
+        private void vasakule_Click(object sender, EventArgs e)
+        {
+            string calendarText = calendar.ToString();
+            calendarText = calendarText.Substring(44);
+            calendarText = calendarText.Substring(0, calendarText.Length - 9);
+
+            aeg_arv = aeg_arv + 1;
+            if (aeg_arv > lugemine_esindus())
+            {
+                aeg_arv = 0;
+            }
+            cmd = new SqlCommand("SELECT * FROM Seans WHERE seansId=@id", connect);
+            connect.Open();
+            cmd.Parameters.AddWithValue("@id", esindus_seansid[aeg_arv]);
+            try
+            {
+                using (SqlDataReader lug = cmd.ExecuteReader())
+                {
+                    while (lug.Read())
+                    {
+                        string PaevText = lug["paev"].ToString();
+                        PaevText = PaevText.Substring(0, PaevText.Length - 9);
+                        if (PaevText == calendarText)
+                        {
+                            aeg_lbl.Text = "Aeg: " + (lug["aeg"].ToString());
+                            saal_lbl.Text = "Saal: " + (lug["saalId"].ToString());
+                            kasutaja_nimi.SaalID = Int16.Parse(lug["saalId"].ToString());
 
                         }
 
@@ -133,6 +181,12 @@ namespace Kino_ulesanne
             {
                 connect.Close();
             }
+        }
+        private void Tellima_btn_click(object sender, EventArgs e)
+        {
+            Saal saal = new Saal();
+            saal.Visible = true;
+            this.Visible = false;
         }
     }
 }

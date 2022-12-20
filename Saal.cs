@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -14,6 +15,8 @@ namespace Kino_ulesanne
 {
     public partial class Saal : Form
     {
+        SqlConnection connect = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\opilane\source\repos\TARpv21_Vassiljev\Kino_ulesanne\teaterBase.mdf;Integrated Security=True");
+        SqlCommand cmd;
         enum Nimetus { saal1, saal2, saal3, saal4, saal5 };
         PictureBox pilt_back = new PictureBox();
         ComponentResourceManager resources = new ComponentResourceManager(typeof(Saal));
@@ -38,7 +41,40 @@ namespace Kino_ulesanne
             Text = "Saal";
             ((ISupportInitialize)pilt_back).EndInit();
             ResumeLayout(false);
-            Label_method(saal_txt, 25F, 300,15, 200,40,"Esimene Saal", Color.Maroon,Color.White);
+            int MaxRida = 0;
+            int MaxKoht = 0;
+            if (kasutaja_nimi.SaalID==1)
+            {
+                Label_method(saal_txt, 25F, 300,15, 200,40,"Esimene Saal", Color.Maroon,Color.White);
+                cmd = new SqlCommand("SELECT * FROM Saal WHERE saalId=@id", connect);
+                connect.Open();
+                cmd.Parameters.AddWithValue("@id", kasutaja_nimi.SaalID);
+                try
+                {
+                    using (SqlDataReader lug = cmd.ExecuteReader())
+                    {
+                        while (lug.Read())
+                        {
+                            MaxRida = Int16.Parse(lug["maxRida"].ToString());
+                            MaxKoht = Int16.Parse(lug["maxKoht"].ToString());
+                        }
+                    }
+                }
+                finally
+                {
+                    connect.Close();
+                }
+                Plaan(MaxKoht, MaxRida, 200, 100, 10, 10);
+            }
+            else if (kasutaja_nimi.SaalID == 2)
+            {
+                Label_method(saal_txt, 25F, 300, 15, 160, 40, "Teine Saal", Color.Maroon, Color.White);
+            }
+            else if(kasutaja_nimi.SaalID == 3)
+            {
+                Label_method(saal_txt, 25F, 300, 15, 160, 40, "Kolme Saal", Color.Maroon, Color.White);
+            }
+            
         }
 
         public void Plaan(int kohad, int read, int x, int y, int a, int b) //250, 70, 50, 50
@@ -48,12 +84,13 @@ namespace Kino_ulesanne
             int counter = 0;
             tlp.AutoSize = true;
             tlp.Location = new Point(x, y);
+            kohad = kohad / read;
             tlp.ColumnCount = kohad;
             tlp.RowCount = read;
             tlp.BackColor = Color.Maroon;
-            for (int i = 0; i < kohad; i++)
+            for (int i = 0; i < read; i++)
             {
-                for (int j = 0; j < read; j++)
+                for (int j = 0; j < kohad; j++)
                 {
                     counter++;
                     koht_rida = new PictureBox
@@ -90,6 +127,6 @@ namespace Kino_ulesanne
             Controls.Add(label);
 
         }
-            
+
     }
 }
